@@ -1,6 +1,15 @@
-# Swapi7doc
+# 7 Days of Code - *Angular*
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+## Dia 1
+
+### Objetivos
+
+- Construir o projeto base.
+  - Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 17.0.3.
+- Adicionar o Material Design.
+- Criar os componentes das páginas de Home, Filmes e Nave.
+- Aplicar o esquema de rotas para redirecionar para cada um desses componentes.
+
 
 ## Development server
 
