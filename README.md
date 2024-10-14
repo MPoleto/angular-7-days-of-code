@@ -1,14 +1,25 @@
 # 7 Days of Code - *Angular*
 
+7 Dias, para cada dia uma meta a ser cumprida e ao fim um projeto pronto.
+**Objetivo do Projeto:** Construir uma aplicação em Angular que consuma os dados da [API do Star Wars](https://swapi.dev/).
+
 ## Dia 1
 
-### Objetivos
+### Objetivos do dia
 
 - Construir o projeto base.
   - Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 17.0.3.
 - Adicionar o Material Design.
+  - Instalado com o comando ```ng add @angular/material```
 - Criar os componentes das páginas de Home, Filmes e Nave.
+  - No diretório `app`, criar um subdiretório `componentes` para criar os componentes do projeto.
+  - Componentes criados com o comando ```ng g c [nome-componente]```
 - Aplicar o esquema de rotas para redirecionar para cada um desses componentes.
+  - No arquivo `app.routes.ts` configurar as rotas para os componentes.
+  - Criar um menu para acessar as rotas utilizando o componente Toolbar do Material Design.
+
+-------------
+*Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
 
 
 ## Development server
