@@ -18,6 +18,14 @@
   - No arquivo `app.routes.ts` configurar as rotas para os componentes.
   - Criar um menu para acessar as rotas utilizando o componente Toolbar do Material Design.
 
+## Dia 2
+
+### Objetivo do dia
+
+- Trabalhar na construção de uma lista para exibir os filmes da franquia Star Wars de forma estática, sem usar a API.
+  - Usar o arquivo `films.json`.
+  - Os dados são exibidos utilizando o componente de Tabela do Material Design.
+
 -------------
 *Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
 

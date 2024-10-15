@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-nave',
   standalone: true,
   imports: [],
-  templateUrl: './nave.component.html',
-  styleUrl: './nave.component.css'
+  templateUrl: './naves.component.html',
+  styleUrl: './naves.component.css'
 })
-export class NaveComponent {
+export class NavesComponent {
 
 }
