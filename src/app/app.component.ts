@@ -26,6 +26,6 @@ import { NavesComponent } from './componentes/naves/naves.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = '7 Days of Code';
+  title = 'SWAPI - 7 Days of Code - Angular';
 
 }

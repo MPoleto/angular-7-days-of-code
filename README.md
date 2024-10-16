@@ -26,6 +26,15 @@
   - Usar o arquivo `films.json`.
   - Os dados são exibidos utilizando o componente de Tabela do Material Design.
 
+## Dia 3
+
+### Objetivo do dia
+
+- Buscar os filmes na API, substituindo a busca no arquivo JSON por uma requisição na API (*https://swapi.dev/api/*).
+  - Para resolver esse desafio usar `Serviços`.
+  - Criar uma interface para definir as propriedades da API.
+  - Usar tipo `genérico` `<T>`
+
 -------------
 *Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
 
