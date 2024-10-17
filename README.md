@@ -35,6 +35,14 @@
   - Criar uma interface para definir as propriedades da API.
   - Usar tipo `genérico` `<T>`
 
+## Dia 4
+
+### Objetivos do dia
+
+- Criar um formulário onde realizará a busca pelo título do filme.
+  - Usar o recurso de busca da API, que filtra o conjunto de informações. Para isso, a URL recebe o parâmetro `search` .
+- Às vezes a API demora para mostrar as informações, por isso, aplicar um `Spinner` para proporcionar uma melhor experiência ao usuário.
+
 -------------
 *Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
 

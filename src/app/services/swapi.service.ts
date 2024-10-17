@@ -11,7 +11,8 @@ export class SwapiService<T> {
 
   constructor(private http: HttpClient) { }
 
-  obter(path: string): Observable<T> {
-    return this.http.get<T>(this.API + path);
+  obter(path: string, search?: string): Observable<T> {
+    let buscar = search ? `/?search=${search}` : '';
+    return this.http.get<T>(this.API + path + buscar);
   }
 }

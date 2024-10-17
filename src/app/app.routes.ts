@@ -16,5 +16,10 @@ export const routes: Routes = [
   {
     path: 'naves',
     component: NavesComponent
+  },
+  { 
+    path: '', 
+    redirectTo: 'home', 
+    pathMatch: 'full' 
   }
 ];

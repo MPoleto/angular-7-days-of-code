@@ -3,6 +3,13 @@
   <h1>Filmes</h1>
 </section>
 
+<form>
+  <mat-form-field>
+    <mat-label>Qual filme está procurando?</mat-label>
+    <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirFilmes()">
+  </mat-form-field>
+</form>
+
 <table mat-table [dataSource]="filmesAPI.results">
   <ng-container matColumnDef="episodio">
     <th mat-header-cell *matHeaderCellDef>Episódio</th>
@@ -22,3 +29,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+@if(exibirSpinner) {
+  <mat-spinner></mat-spinner>
+} 
