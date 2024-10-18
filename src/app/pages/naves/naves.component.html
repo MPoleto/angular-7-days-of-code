@@ -1,0 +1,97 @@
+<section>
+  <mat-icon aria-hidden="true" fontIcon="rocket launch"></mat-icon>
+  <h1>Naves Estelares</h1>
+</section>
+
+@if(exibirSpinner) {
+  <mat-spinner></mat-spinner>
+}
+
+@if(!exibirSpinner) {
+  <form>
+    <mat-form-field>
+      <mat-label>Qual nave está procurando?</mat-label>
+      <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirNaves()">
+    </mat-form-field>
+  </form>
+
+  <table mat-table [dataSource]="navesAPI.results">
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let naves">{{naves.name}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef>Modelo</th>
+      <td mat-cell *matCellDef="let naves">{{naves.model}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fabricante">
+      <th mat-header-cell *matHeaderCellDef>Fabricante</th>
+      <td mat-cell *matCellDef="let naves">{{naves.manufacturer}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="custo">
+      <th mat-header-cell *matHeaderCellDef>Custo</th>
+      <td mat-cell *matCellDef="let naves">{{naves.cost_in_credits}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="comprimento">
+      <th mat-header-cell *matHeaderCellDef>Comprimento</th>
+      <td mat-cell *matCellDef="let naves">{{naves.length}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="velocidade">
+      <th mat-header-cell *matHeaderCellDef>Velocidade Máxima</th>
+      <td mat-cell *matCellDef="let naves">{{naves.max_atmosphering_speed}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tripulacao">
+      <th mat-header-cell *matHeaderCellDef>Tripulação</th>
+      <td mat-cell *matCellDef="let naves">{{naves.crew}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="passageiros">
+      <th mat-header-cell *matHeaderCellDef>Passageiros</th>
+      <td mat-cell *matCellDef="let naves">{{naves.passengers}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacidade">
+      <th mat-header-cell *matHeaderCellDef>Capacidade de carga</th>
+      <td mat-cell *matCellDef="let naves">{{naves.cargo_capacity}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="consumiveis">
+      <th mat-header-cell *matHeaderCellDef>Consumíveis</th>
+      <td mat-cell *matCellDef="let naves">{{naves.consumables}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="classificacao_hiperdrive">
+      <th mat-header-cell *matHeaderCellDef>Classificação de Hiperdrive</th>
+      <td mat-cell *matCellDef="let naves">{{naves.hyperdrive_rating}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="MGLT">
+      <th mat-header-cell *matHeaderCellDef>MGLT</th>
+      <td mat-cell *matCellDef="let naves">{{naves.MGLT}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="classe_nave">
+      <th mat-header-cell *matHeaderCellDef>Classe da Nave Estelar</th>
+      <td mat-cell *matCellDef="let naves">{{naves.starship_class}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="pilotos">
+      <th mat-header-cell *matHeaderCellDef>Pilotos</th>
+      <td mat-cell *matCellDef="let naves">{{naves.pilots}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="filmes">
+      <th mat-header-cell *matHeaderCellDef>Filmes</th>
+      <td mat-cell *matCellDef="let naves">{{naves.films}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+}

@@ -11,9 +11,9 @@ import { RetornoAPI } from '../retornoAPI/retorno-api';
 import { CommonModule } from '@angular/common';
 
 interface Filme {
-  episode_id: number,
-  title: string,
-  release_date: string
+  episode_id: number;
+  title: string;
+  release_date: string;
 }
 
 @Component({
@@ -38,9 +38,9 @@ export class FilmesComponent implements OnInit {
     results: []
   };
   
-  displayedColumns = ['episodio', 'titulo', 'data_estreia'];
+  displayedColumns: string[] = ['episodio', 'titulo', 'data_estreia'];
 
-  public termoBusca: string = '';
+  termoBusca: string = '';
   
   constructor(private swapiService: SwapiService<RetornoAPI<Filme>>) {}
   
@@ -49,10 +49,12 @@ export class FilmesComponent implements OnInit {
   }
   
   exibirFilmes(): void {
-    setTimeout(() => {
-      this.swapiService.obter('films', this.termoBusca).subscribe(lista => { this.filmesAPI = lista });
+    this.exibirSpinner = true;
+    
+    this.swapiService.obter('films', this.termoBusca).subscribe(lista => { 
+      this.filmesAPI = lista 
       this.exibirSpinner = false;
-    }, 3000);
+    });
   } 
 
   formatarData(dataFilme: string): String {

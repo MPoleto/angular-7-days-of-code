@@ -43,8 +43,17 @@
   - Usar o recurso de busca da API, que filtra o conjunto de informações. Para isso, a URL recebe o parâmetro `search` .
 - Às vezes a API demora para mostrar as informações, por isso, aplicar um `Spinner` para proporcionar uma melhor experiência ao usuário.
 
+## Dia 5
+
+### Objetivos do dia
+
+- Construir uma tabela para exibir as naves estelares.
+- Aplicar uma notificação de carregamento na página das naves.
+
 -------------
 *Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
+
+[Star wars icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/star-wars)
 
 
 ## Development server

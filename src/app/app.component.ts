@@ -5,9 +5,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 
-import { HomeComponent } from './componentes/home/home.component';
-import { FilmesComponent } from './componentes/filmes/filmes.component';
-import { NavesComponent } from './componentes/naves/naves.component';
+import { HomeComponent } from './pages/home/home.component';
+import { FilmesComponent } from './pages/filmes/filmes.component';
+import { NavesComponent } from './pages/naves/naves.component';
 
 @Component({
   selector: 'app-root',
