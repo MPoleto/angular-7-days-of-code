@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { FilmesComponent } from './pages/filmes/filmes.component';
-import { NavesComponent } from './pages/naves/naves.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { FilmesComponent } from './components/pages/filmes/filmes.component';
+import { NavesComponent } from './components/pages/naves/naves.component';
 
 export const routes: Routes = [
   {

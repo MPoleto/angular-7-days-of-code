@@ -3,18 +3,18 @@
   <h1>Naves Estelares</h1>
 </section>
 
+<form>
+  <mat-form-field>
+    <mat-label>Qual nave está procurando?</mat-label>
+    <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirNaves()">
+  </mat-form-field>
+</form>
+
 @if(exibirSpinner) {
   <mat-spinner></mat-spinner>
 }
 
 @if(!exibirSpinner) {
-  <form>
-    <mat-form-field>
-      <mat-label>Qual nave está procurando?</mat-label>
-      <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirNaves()">
-    </mat-form-field>
-  </form>
-
   <table mat-table [dataSource]="navesAPI.results">
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
@@ -94,4 +94,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <mat-paginator 
+    (page)="mudarPagina($event)"
+    [length]="totalDeNaves"
+    [pageSize]="10"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+  </mat-paginator>
 }

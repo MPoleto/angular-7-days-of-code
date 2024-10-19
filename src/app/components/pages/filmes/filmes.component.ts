@@ -6,8 +6,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-import { SwapiService } from '../../services/swapi.service';
-import { RetornoAPI } from '../retornoAPI/retorno-api';
+import { SwapiService } from '../../../services/swapi.service';
+import { RetornoAPI } from '../../../shared/retornoAPI/retorno-api';
 import { CommonModule } from '@angular/common';
 
 interface Filme {
@@ -35,6 +35,9 @@ export class FilmesComponent implements OnInit {
   exibirSpinner = true;
   
   filmesAPI: RetornoAPI<Filme> = {
+    count: 0,
+    next: null,
+    previous: null,
     results: []
   };
   
