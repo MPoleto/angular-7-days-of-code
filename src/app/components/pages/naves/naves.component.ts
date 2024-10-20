@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -44,11 +45,21 @@ interface Nave {
     MatIconModule,
     MatProgressSpinnerModule,
   ],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed,void', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
   templateUrl: './naves.component.html',
   styleUrl: './naves.component.css'
 })
 export class NavesComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'modelo', 'fabricante', 'custo', 'comprimento', 'velocidade', 'tripulacao', 'passageiros', 'capacidade', 'consumiveis', 'classificacao_hiperdrive', 'MGLT', 'classe_nave', 'pilotos', 'filmes']
+  // colunas: string[] = ['nome', 'modelo', 'fabricante', 'custo', 'comprimento', 'velocidade', 'tripulacao', 'passageiros', 'capacidade', 'consumiveis', 'classificacao_hiperdrive', 'MGLT', 'classe_nave', 'pilotos', 'filmes'];
+  colunas: string[] = ['name', 'model', 'manufacturer'];
+  colunasCompletas: string[] = [...this.colunas, 'expandir'];
+  naveCompleta: Nave | null;
   
   navesAPI: RetornoAPI<Nave> = {
     count: 0,
@@ -60,7 +71,7 @@ export class NavesComponent implements OnInit {
   exibirSpinner = true;
   termoBusca: string = '';
   totalDeNaves: number = 0;
-  pageIndex: number = 0;
+  paginaIndex: number = 0;
 
   constructor(private swapiService: SwapiService<RetornoAPI<Nave>>) { }
 
@@ -73,7 +84,7 @@ export class NavesComponent implements OnInit {
     let path: string = 'starships';
 
     if (this.termoBusca === '') {
-      path = `starships/?page=${this.pageIndex + 1}`;
+      path = `starships/?page=${this.paginaIndex + 1}`;
     }
 
     this.swapiService.obter(path, this.termoBusca).subscribe(lista => { 
@@ -87,7 +98,7 @@ export class NavesComponent implements OnInit {
   }
   
   mudarPagina(e: PageEvent) {
-    this.pageIndex = e.pageIndex;
+    this.paginaIndex = e.pageIndex;
     this.exibirNaves();
   }
   

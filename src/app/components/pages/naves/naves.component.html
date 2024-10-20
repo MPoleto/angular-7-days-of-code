@@ -1,21 +1,66 @@
 <section>
-  <mat-icon aria-hidden="true" fontIcon="rocket launch"></mat-icon>
+  <mat-icon aria-hidden="true" fontIcon="rocket_launch"></mat-icon>
   <h1>Naves Estelares</h1>
 </section>
 
 <form>
-  <mat-form-field>
+  <mat-form-field   color="warn">
     <mat-label>Qual nave está procurando?</mat-label>
     <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirNaves()">
   </mat-form-field>
 </form>
 
 @if(exibirSpinner) {
-  <mat-spinner></mat-spinner>
+  <mat-spinner color="accent"></mat-spinner>
 }
 
 @if(!exibirSpinner) {
-  <table mat-table [dataSource]="navesAPI.results">
+  <table mat-table [dataSource]="navesAPI.results" multiTemplateDataRows class="mat-elevation-z8">
+    @for(coluna of colunas; track coluna) {
+      <ng-container matColumnDef="{{coluna}}">
+        <th mat-header-cell *matHeaderCellDef>{{coluna}}</th>
+        <td mat-cell *matCellDef="let nave">{{nave[coluna]}}</td>
+      </ng-container>
+    }
+
+    <ng-container matColumnDef="expandir">
+      <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+      <td mat-cell *matCellDef="let nave">
+        <button mat-icon-button (click)="(naveCompleta = naveCompleta === nave ? null : nave); $event.stopPropagation()">
+          @if(naveCompleta === nave) {
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          } @else {
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          }
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalhesNave">
+      <td mat-cell *matCellDef="let nave" [attr.colspan]="colunasCompletas.length">
+        <div [@detailExpand]="nave == naveCompleta ? 'expanded' : 'collapsed'" class="example-element-detail">
+          <div>Custo - {{nave.cost_in_credits}}</div>
+          <div>Comprimento - {{nave.length}}</div>
+          <div>Velocidade - {{nave.max_atmosphering_speed}}</div>
+          <div>Tripulação - {{nave.crew}}</div>
+          <div>Passageiros - {{nave.passengers}}</div>
+          <div>Capacidade de carga - {{nave.cargo_capacity}}</div>
+          <div>Consumíveis - {{nave.consumables}}</div>
+          <div>Classificação de Hyperdrive {{nave.hyperdrive_rating}}</div>
+          <div>MGLT - {{nave.MGLT}}</div>
+          <div>Classe da Nave - {{nave.starship_class}}</div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasCompletas"></tr>
+    <tr mat-row *matRowDef="let nave; columns: colunasCompletas;"
+      class="example-element-row"
+      [class.example-element-row]="naveCompleta === nave"
+      (click)="naveCompleta = naveCompleta === nave ? null : nave"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['detalhesNave']" class="example-detail-row"></tr>
+
+    <!-- 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
       <td mat-cell *matCellDef="let naves">{{naves.name}}</td>
@@ -30,7 +75,6 @@
       <th mat-header-cell *matHeaderCellDef>Fabricante</th>
       <td mat-cell *matCellDef="let naves">{{naves.manufacturer}}</td>
     </ng-container>
-
     <ng-container matColumnDef="custo">
       <th mat-header-cell *matHeaderCellDef>Custo</th>
       <td mat-cell *matCellDef="let naves">{{naves.cost_in_credits}}</td>
@@ -39,7 +83,7 @@
     <ng-container matColumnDef="comprimento">
       <th mat-header-cell *matHeaderCellDef>Comprimento</th>
       <td mat-cell *matCellDef="let naves">{{naves.length}}</td>
-    </ng-container>
+    </ng-container> 
 
     <ng-container matColumnDef="velocidade">
       <th mat-header-cell *matHeaderCellDef>Velocidade Máxima</th>
@@ -90,16 +134,16 @@
       <th mat-header-cell *matHeaderCellDef>Filmes</th>
       <td mat-cell *matCellDef="let naves">{{naves.films}}</td>
     </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="colunas, track coluna"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas, track coluna;"></tr>
+    -->
   </table>
 
   <mat-paginator 
     (page)="mudarPagina($event)"
     [length]="totalDeNaves"
     [pageSize]="10"
-    [pageIndex]="pageIndex"
-    aria-label="Select page">
+    [pageIndex]="paginaIndex"
+    showFirstLastButtons>
   </mat-paginator>
 }

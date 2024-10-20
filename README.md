@@ -6,6 +6,10 @@
 
 ## Desenvolvimento
 
+> *Status:*   
+> - [x] Desafios  
+> - [ ] Estilização a página  
+
 ### Dia 1
 
 #### Objetivos do dia
@@ -27,7 +31,7 @@
 
 - Trabalhar na construção de uma lista para exibir os filmes da franquia Star Wars de forma estática, sem usar a API.
   - Usar o arquivo `films.json`.
-  - Os dados são exibidos utilizando o componente de Tabela do Material Design.
+  - Os dados são exibidos utilizando o componente *Table* do Material Design.
 
 ### Dia 3
 
@@ -51,7 +55,7 @@
 #### Objetivos do dia
 
 - Construir uma tabela para exibir as naves estelares.
-- Aplicar uma notificação de carregamento na página das naves.
+- Aplicar uma notificação de carregamento (*Spinner*) na página das naves.
 
 ### Dia 6
 
@@ -62,24 +66,20 @@
 - Realizar uma alteração na requisição para adicionar um parâmetro `page`, com o número da página desejada.
   - A requisição deve receber a página de forma dinâmica, ou seja, por meio de um evento no template. Para isso, utilizar o *Paginator* do Material Design.  
 
--------------
+### Dia 7
+
+#### Objetivo do dia
+
+- Selecionar algumas informações sobre cada nave para exibir na linha da tabela.   
+  - Adicionar um evento de clique na linha da tabela para que exiba mais dados sobre a nave selecionada.  
+  - Pode utilizar a [tabela com a linha expansível](https://material.angular.io/components/table/examples#table-expandable-rows), um exemplo de tabela que abre uma linha logo abaixo do item selecionado.  
+  
+<br/>
+
+--------------------------
+
 *Projeto com o objetivo de por em prática o conteúdo estudado na Alura na [Formação Angular: crie aplicações web ágeis](https://cursos.alura.com.br/formacao-angular-crie-aplicacoes-web-ageis)*
 
 [Star wars icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/star-wars)
 
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

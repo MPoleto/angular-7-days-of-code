@@ -41,7 +41,7 @@ export class FilmesComponent implements OnInit {
     results: []
   };
   
-  displayedColumns: string[] = ['episodio', 'titulo', 'data_estreia'];
+  colunas: string[] = ['episodio', 'titulo', 'data_estreia'];
 
   termoBusca: string = '';
   
