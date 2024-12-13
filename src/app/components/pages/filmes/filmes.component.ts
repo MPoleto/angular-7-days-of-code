@@ -1,19 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { SwapiService } from '../../../services/swapi.service';
 import { RetornoAPI } from '../../../shared/retornoAPI/retorno-api';
-import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../../shared/header/header.component';
+import { TituloComponent } from '../../../shared/titulo/titulo.component';
 
 interface Filme {
-  episode_id: number;
   title: string;
+  episode_id: number;
   release_date: string;
+  planets: string[];
+  species: string[];
+  vehicles: string[];
 }
 
 @Component({
@@ -21,12 +26,14 @@ interface Filme {
   standalone: true,
   imports: [
     CommonModule,
-    MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
+    MatCardModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    HeaderComponent,
+    TituloComponent
   ],
   templateUrl: './filmes.component.html',
   styleUrl: './filmes.component.css'
@@ -41,7 +48,7 @@ export class FilmesComponent implements OnInit {
     results: []
   };
   
-  colunas: string[] = ['episodio', 'titulo', 'data_estreia'];
+  colunas: string[] = ['titulo', 'episodio', 'data_estreia', 'planetas', 'especies', 'veiculos'];
 
   termoBusca: string = '';
   
@@ -63,6 +70,11 @@ export class FilmesComponent implements OnInit {
   formatarData(dataFilme: string): String {
     const data = new Date(dataFilme);
     return data.toLocaleDateString('pt-BR');
+  }
+
+  formatarLink(link: string): String {
+    let substringInicio = link.lastIndexOf('api/') + 4;
+    return link.slice(substringInicio, -1);
   }
  
 }

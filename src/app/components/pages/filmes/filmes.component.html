@@ -1,38 +1,84 @@
-<section>
-  <mat-icon aria-hidden="true" fontIcon="movie"></mat-icon>
-  <h1>Filmes</h1>
-</section>
+<app-header></app-header>
 
-<form>
-  <mat-form-field>
+<app-titulo
+  [iconeSrc]="'../assets/icon-lightsaber.png'"
+  [iconeAlt]="'Ícone sabres de luz'"
+  [titulo]="'Filmes'"
+>
+</app-titulo>
+
+<form class="formulario__busca">
+  <mat-form-field appearance="outline">
     <mat-label>Qual filme está procurando?</mat-label>
     <input matInput type="search" [(ngModel)]="termoBusca" name="termoBusca" (keyup)="exibirFilmes()">
   </mat-form-field>
 </form>
 
-
 @if(exibirSpinner) {
-  <mat-spinner></mat-spinner>
+  <div class="spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
 }
 
 @if(!exibirSpinner) {
-  <table mat-table [dataSource]="filmesAPI.results">
-    <ng-container matColumnDef="episodio">
-      <th mat-header-cell *matHeaderCellDef>Episódio</th>
-      <td mat-cell *matCellDef="let filmes">{{filmes.episode_id}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="titulo">
-      <th mat-header-cell *matHeaderCellDef>Título</th>
-      <td mat-cell *matCellDef="let filmes">{{filmes.title}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="data_estreia">
-      <th mat-header-cell *matHeaderCellDef>Data de Estreia</th>
-      <td mat-cell *matCellDef="let filmes">{{formatarData(filmes.release_date)}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
-    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
-  </table>
+  <mat-card appearance="raised">
+    <table mat-table [dataSource]="filmesAPI.results" class="mat-elevation-z8">
+      <ng-container matColumnDef="titulo" class="tabela__coluna__filme">
+        <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Filme</th>
+        <td mat-cell *matCellDef="let filmes">{{filmes.title}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="episodio">
+        <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Episódio</th>
+        <td mat-cell *matCellDef="let filmes">{{filmes.episode_id}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="data_estreia">
+        <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Data de Estreia</th>
+        <td mat-cell *matCellDef="let filmes">{{formatarData(filmes.release_date)}}</td>
+      </ng-container>
+      
+          <ng-container matColumnDef="planetas">
+            <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Planetas</th>
+            <td mat-cell *matCellDef="let filmes">
+              <ul>
+                @for (planet of filmes.planets; track planet) {
+                  <li>
+                    <a [href]="planet" target="_blank" rel="noopener noreferrer">{{formatarLink(planet)}}</a>
+                  </li>
+                }
+              </ul>  
+            </td>
+          </ng-container>
+  
+      <ng-container matColumnDef="especies">
+        <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Espécies</th>
+        <td mat-cell *matCellDef="let filmes">
+          <ul>
+            @for (especie of filmes.species; track especie) {
+              <li>
+                <a [href]="especie" target="_blank" rel="noopener noreferrer">{{formatarLink(especie)}}</a>
+              </li>
+            }
+          </ul>  
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="veiculos">
+        <th class="tabela__titulo" mat-header-cell *matHeaderCellDef>Veículos</th>
+        <td mat-cell *matCellDef="let filmes">
+          <ul>
+            @for (vehicle of filmes.vehicles; track vehicle) {
+              <li>
+                <a [href]="vehicle" target="_blank" rel="noopener noreferrer">{{formatarLink(vehicle)}}</a>
+              </li>
+            }
+          </ul>  
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+      <tr class="tabela__linhas__dados" mat-row *matRowDef="let row; columns: colunas;"></tr>
+    </table>
+  </mat-card>
 }

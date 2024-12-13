@@ -1,5 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Ysabeau+SC:wght@1..1000&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --bg-color-principal: #141D34;
+  --bg-color-header: #0D1322;
+  --font-color-principal: #EFE9EB;
+  --font-color-header: #AFA9AB;
+  --shadow-color-clara: #2196F3;
+  --shadow-color-media: #2D00F7;
+  --shadow-color-escura: #17112E;
+  --font-family-titulo: "Orbitron", sans-serif;
+  --font-family-secundaria: "Ysabeau SC", serif;
+  --font-family-geral: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  font-family: var(--font-family-geral);
+  background-color: var(--bg-color-principal);
+  color: var(--font-color-principal);
+}
+
+form.formulario__busca {
+  margin: 1rem;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 25%;
+}
+
+mat-label {
+  font-family: var(--font-family-titulo);
+  letter-spacing: .15rem;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+mat-card {
+  padding: .5rem 3rem 3rem;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 1px 10px var(--shadow-color-escura);
+}
+
+th, td {
+  font-size: 1rem;
+  color: var(--font-color-principal);
+  font-weight: 300;
+}
+
+th.tabela__titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--font-family-titulo);
+  letter-spacing: .15rem;
+}
+
+tr.tabela__linhas__dados:hover {
+  background-color: var(--bg-color-header);
+  cursor: default;
+} 

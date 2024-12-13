@@ -5,11 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { RetornoAPI } from '../../../shared/retornoAPI/retorno-api';
 import { SwapiService } from '../../../services/swapi.service';
+import { HeaderComponent } from '../../../shared/header/header.component';
+import { TituloComponent } from '../../../shared/titulo/titulo.component';
 
 interface Nave {
   name:                   string;
@@ -41,9 +45,12 @@ interface Nave {
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatCardModule,
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    HeaderComponent,
+    TituloComponent
   ],
   animations: [
     trigger('detailExpand', [
@@ -56,7 +63,6 @@ interface Nave {
   styleUrl: './naves.component.css'
 })
 export class NavesComponent implements OnInit {
-  // colunas: string[] = ['nome', 'modelo', 'fabricante', 'custo', 'comprimento', 'velocidade', 'tripulacao', 'passageiros', 'capacidade', 'consumiveis', 'classificacao_hiperdrive', 'MGLT', 'classe_nave', 'pilotos', 'filmes'];
   colunas: string[] = ['name', 'model', 'manufacturer'];
   colunasCompletas: string[] = [...this.colunas, 'expandir'];
   naveCompleta: Nave | null;
@@ -97,6 +103,14 @@ export class NavesComponent implements OnInit {
     });
   }
   
+  alterarTituloExibido(nomeColuna: string): string {
+    const novoTitulo: string[] = ['Nome', 'Modelo', 'Fabricante'];
+    let posicao = this.colunas.indexOf(nomeColuna);
+    let titulo: string = novoTitulo.at(posicao)!;
+
+    return titulo;
+  }
+
   mudarPagina(e: PageEvent) {
     this.paginaIndex = e.pageIndex;
     this.exibirNaves();

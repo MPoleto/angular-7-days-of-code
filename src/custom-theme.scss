@@ -12,15 +12,15 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$swapi-7doc-primary: mat.define-palette(mat.$indigo-palette);
-$swapi-7doc-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$swapi-7doc-primary: mat.define-palette(mat.$blue-palette);
+$swapi-7doc-accent: mat.define-palette(mat.$light-blue-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $swapi-7doc-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$swapi-7doc-theme: mat.define-light-theme((
+$swapi-7doc-theme: mat.define-dark-theme((
   color: (
     primary: $swapi-7doc-primary,
     accent: $swapi-7doc-accent,

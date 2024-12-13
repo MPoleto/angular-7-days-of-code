@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-color-header);
+  box-shadow: 0px 1px 10px var(--shadow-color-escura);
+}
+
+.menu__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu__logo {
+  width: 6.5rem;
+  filter: invert(80%) drop-shadow(1px -1px 1px var(--shadow-color-clara))
+  drop-shadow(-1px 1px 1px var(--shadow-color-clara))
+  drop-shadow(0px 0px 1px var(--shadow-color-media));
+}
+
+.menu__item {
+  text-decoration: none;
+  font-weight: 1000;
+  font-family: var(--font-family-secundaria);
+  color: var(--font-color-header);
+}
+
+.menu__item:hover {
+  color: #E9E9E8;
+  text-shadow: 1px -1px 5px var(--shadow-color-clara), -1px 1px 5px var(--shadow-color-clara), 0px 0px 8px var(--shadow-color-media);
+}
